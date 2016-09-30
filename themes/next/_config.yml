@@ -82,7 +82,7 @@ font:
   global:
     # external: true will load this font family from host.
     external: true
-    family: Lato
+    family: Monda
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6)
   # Fallback to `global` font settings.
@@ -101,13 +101,13 @@ font:
   # The `size` option use `px` as unit
   logo:
     external: true
-    family:
-    size:
+    family: Lobster Two
+    size: 24
 
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family:
+    family: PT Mono
 
 
 
@@ -120,8 +120,8 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  GitHub: https://github.com/klgd
 
 
 # Social Links Icons
@@ -201,7 +201,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 
 # Automatically scroll page to section which is under <!-- more --> mark.
