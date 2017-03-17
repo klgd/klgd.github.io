@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -99,16 +99,19 @@
 
 
 
-<meta name="description" content="今晚本来是打算学习一下vue的，结果看到有个东西叫：hexo，一时好奇就开始研究并了起来（好吧，我跑题了）网上搜了几篇介绍安装的文章，然后找了 hexo-theme-next 的主题，就这样博客搭建好了。">
+<meta name="description" content="今晚本来是打算学习一下vue的，结果看到有个东西叫：hexo，一时好奇就开始研究并了起来（好吧，我跑题了）网上搜了几篇介绍安装的文章，然后找了 hexo-theme-next 的主题，就这样博客搭建好了。  
+这里简单的说一下hexo的安装使用：本地必须先安装nodejs，具体步骤见nodejs官方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Hexo的博客开张了">
 <meta property="og:url" content="http://www.scophp.com/2016/09/29/基于Hexo的博客开张了/index.html">
 <meta property="og:site_name" content="Aker's Blog">
-<meta property="og:description" content="今晚本来是打算学习一下vue的，结果看到有个东西叫：hexo，一时好奇就开始研究并了起来（好吧，我跑题了）网上搜了几篇介绍安装的文章，然后找了 hexo-theme-next 的主题，就这样博客搭建好了。">
-<meta property="og:updated_time" content="2017-03-17T03:18:52.917Z">
+<meta property="og:description" content="今晚本来是打算学习一下vue的，结果看到有个东西叫：hexo，一时好奇就开始研究并了起来（好吧，我跑题了）网上搜了几篇介绍安装的文章，然后找了 hexo-theme-next 的主题，就这样博客搭建好了。  
+这里简单的说一下hexo的安装使用：本地必须先安装nodejs，具体步骤见nodejs官方">
+<meta property="og:updated_time" content="2017-03-17T07:04:01.910Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Hexo的博客开张了">
-<meta name="twitter:description" content="今晚本来是打算学习一下vue的，结果看到有个东西叫：hexo，一时好奇就开始研究并了起来（好吧，我跑题了）网上搜了几篇介绍安装的文章，然后找了 hexo-theme-next 的主题，就这样博客搭建好了。">
+<meta name="twitter:description" content="今晚本来是打算学习一下vue的，结果看到有个东西叫：hexo，一时好奇就开始研究并了起来（好吧，我跑题了）网上搜了几篇介绍安装的文章，然后找了 hexo-theme-next 的主题，就这样博客搭建好了。  
+这里简单的说一下hexo的安装使用：本地必须先安装nodejs，具体步骤见nodejs官方">
 
 
 
@@ -116,8 +119,8 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -206,19 +209,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
           </a>
         </li>
       
@@ -226,19 +217,15 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
+            所有文章
           </a>
         </li>
       
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
+        <li class="menu-item menu-item-other">
+          <a href="/categories/杂说/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
+            杂说
           </a>
         </li>
       
@@ -387,6 +374,44 @@
 
       
         <p>今晚本来是打算学习一下vue的，结果看到有个东西叫：<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>，一时好奇就开始研究并了起来（好吧，我跑题了）<br>网上搜了几篇介绍安装的文章，然后找了 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">hexo-theme-next</a> 的主题，就这样博客搭建好了。  </p>
+<p>这里简单的说一下hexo的安装使用：<br>本地必须先安装nodejs，具体步骤见<a href="https://nodejs.org" target="_blank" rel="external">nodejs官方</a>   </p>
+<a id="more"></a>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>安装hexo   </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g hexo</div></pre></td></tr></table></figure>
+<ol>
+<li>初始化<br>创建目录，如test，在test目录下，命令行执行：   </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+<ol>
+<li>生成页面文件   </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate （简写： hexo g）</div></pre></td></tr></table></figure>
+<h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><p>本地想要查看效果，可以使用hexo server   </p>
+<ol>
+<li>安装server   </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-server --save</div></pre></td></tr></table></figure>
+<ol>
+<li>安装成功后，启动server   </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
+<ol>
+<li>启动后，浏览器输入<a href="http://localhost:4000" title="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>，即可访问   </li>
+</ol>
+<h2 id="与GitHub配合"><a href="#与GitHub配合" class="headerlink" title="与GitHub配合"></a>与GitHub配合</h2><p>本地必须安装git   </p>
+<ol>
+<li>在GitHub上创建自己的仓库，名称如【klgd.github.io】   </li>
+<li>安装hexo的git包   </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<ol>
+<li>配置参数，打开hexo的配置文件 _config.yml，在最后找到deploy<br>根据自己的仓库情况，配置下面参数</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: git@github.com:klgd/klgd.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p>4.执行命令，向GitHub pull hexo的页面文件   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -495,8 +520,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -512,7 +546,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">日志</span>
+                <span class="site-state-item-name">文章</span>
               </a>
             </div>
           
@@ -570,6 +604,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看"><span class="nav-number">2.</span> <span class="nav-text">查看</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#与GitHub配合"><span class="nav-number">3.</span> <span class="nav-text">与GitHub配合</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -601,7 +651,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
+    NexT.Mist
   </a>
 </div>
 
@@ -672,13 +722,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
