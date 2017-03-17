@@ -8,7 +8,7 @@ author: 博主
 
 menu:
   home: 首页
-  archives: 归档
+  archives: 所有文章
   categories: 分类
   tags: 标签
   about: 关于
@@ -16,6 +16,7 @@ menu:
   schedule: 日程表
   sitemap: 站点地图
   commonweal: 公益404
+  other: 杂说
 
 sidebar:
   overview: 站点概览
@@ -65,7 +66,7 @@ counter:
     other: "目前共计 %d 篇日志。"
 
 state:
-  posts: 日志
+  posts: 文章
   pages: 页面
   tags: 标签
   categories: 分类
