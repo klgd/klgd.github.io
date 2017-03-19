@@ -40,8 +40,8 @@ menu:
   home: /
   #categories: /categories
   #about: /about
-  archives: /archives
-  other: categories/杂说/
+  git: categories/git/index.html
+  other: categories/other/index.html
   #tags: /tags
   #sitemap: /sitemap.xml
   #commonweal: /404.html
