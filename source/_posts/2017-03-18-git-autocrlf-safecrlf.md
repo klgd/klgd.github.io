@@ -19,11 +19,11 @@ CR回车 LF换行
 | MacOS       | CR   | \\r    |
 
 建议：   
-autocrlf=false   
+autocrlf=input   
 safecrlf=true   
 把所有文件使用LF换行符   
 
-
+这样可以保证所有文件都是LF，保持一致性
 <!-- more -->
 
 ## AutoCRLF   
