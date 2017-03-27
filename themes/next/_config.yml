@@ -288,10 +288,10 @@ mathjax:
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+baidu_analytics: 3b908f0c5ae26ed9b3f54c837282c3c0
 
 # Duoshuo ShortName
-duoshuo_shortname: klgd
+#duoshuo_shortname: klgd
 
 # Disqus
 #disqus_shortname:
