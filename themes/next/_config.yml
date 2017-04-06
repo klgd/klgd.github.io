@@ -6,7 +6,7 @@
 favicon: /favicon.ico
 
 # Set default keywords (Use a comma to separate)
-keywords: "Aker,博客,技术,PHP"
+keywords: "浪人日记,klgd,博客,技术,PHP"
 
 # Set rss to false to disable feed link.
 # Leave rss as empty to use site's feed link.
@@ -294,7 +294,7 @@ baidu_analytics: 3b908f0c5ae26ed9b3f54c837282c3c0
 #duoshuo_shortname: klgd
 
 # Disqus
-#disqus_shortname:
+disqus_shortname: scophp
 
 # Hypercomments
 #hypercomments_id:
