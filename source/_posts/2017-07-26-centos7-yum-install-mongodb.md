@@ -1,13 +1,14 @@
 ---
 title: centos7下使用yum安装mongodb3.4
 tags:
-  - MongoDB
-  - Centos7
+  - null
 categories:
-  - MongoDB
+  - null
 date: 2017-07-26 13:08:02
 ---
 
+
+## 配置yum源
 
 `vi /etc/yum.repos.d/mongodb-3.4.repos`
 
@@ -19,25 +20,28 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 ```
+<!-- more -->
 
 这里可以修改 gpgcheck=0, 省去gpg验证
 
-yum安装   
+## 安装   
 `yum  install -y mongodb-org`
 
-配置文件在：/etc/mongod.conf  数据文件在：/var/lib/mongo  日志文件在：/var/log/mongodb  
+配置文件在：/etc/mongod.conf   
+数据文件在：/var/lib/mongo   
+日志文件在：/var/log/mongodb   
 
-启动mongod 
-
+启动mongod   
 `systemctl start mongod.service`
 
-停止mongod
+停止mongod   
 `systemctl stop mongod.service`
 
-开机启动 
+开机启动   
 `systemctl enable mongod.service`
 
 使用 命令  `mongo`
+
 ```
 [root@centos7 ~]# mongo
 MongoDB shell version v3.4.6
