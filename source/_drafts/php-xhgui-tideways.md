@@ -12,6 +12,7 @@ date: 2017-07-27 09:32:27
 mongodb安装
 
 tideways安装
+https://tideways.io/profiler/docs/setup/installation
 
 php mongodb tideways扩展 
 配置php.ini
@@ -50,3 +51,17 @@ $ php install.php
 `auto_prepend_file=/home/wwwroot/xhgui/external/header.php`
 
 https://bugs.php.net/bug.php?id=53611
+
+
+config
+
+```
+'profiler.enable' => function() {
+        if(!empty($_GET['debug'])){
+            return True;
+        }else{
+            // 1%采样
+            return rand(1, 100) === 42;
+        }
+    }
+ ```

@@ -43,7 +43,7 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 使用 命令  `mongo`
 
 ```
-[root@centos7 ~]# mongo
+[root@centos7 ~]# mongo 127.0.0.1:27017
 MongoDB shell version v3.4.6
 connecting to: mongodb://127.0.0.1:27017
 MongoDB server version: 3.4.6
@@ -59,3 +59,4 @@ Server has startup warnings:
 2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
 2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
 ```
+
