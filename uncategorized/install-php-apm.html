@@ -1,0 +1,896 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="浪人日记,klgd,博客,技术,PHP" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="php-apm 是一个PHP的应用性能管理（APM）。它不需要对应用程序的代码进行任何修改，让我们方便地捕捉到错误信息，并提供错误追踪回溯，获取请求的统计内存、CPU、响应时间的统计信息，并提供可视化的展示。。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos安装php-apm">
+<meta property="og:url" content="http://www.scophp.com/uncategorized/install-php-apm.html">
+<meta property="og:site_name" content="浪人日记">
+<meta property="og:description" content="php-apm 是一个PHP的应用性能管理（APM）。它不需要对应用程序的代码进行任何修改，让我们方便地捕捉到错误信息，并提供错误追踪回溯，获取请求的统计内存、CPU、响应时间的统计信息，并提供可视化的展示。。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://aker8img.qiniudn.com/58f901ee-67e5-42c1-89da-1c1f5123755c">
+<meta property="og:image" content="http://aker8img.qiniudn.com/204fd245-bd62-4704-9a74-3782422f0493">
+<meta property="og:image" content="http://aker8img.qiniudn.com/a1f757ab-150c-469a-983d-cba527b32685">
+<meta property="og:updated_time" content="2017-07-28T04:38:25.838Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos安装php-apm">
+<meta name="twitter:description" content="php-apm 是一个PHP的应用性能管理（APM）。它不需要对应用程序的代码进行任何修改，让我们方便地捕捉到错误信息，并提供错误追踪回溯，获取请求的统计内存、CPU、响应时间的统计信息，并提供可视化的展示。。">
+<meta name="twitter:image" content="http://aker8img.qiniudn.com/58f901ee-67e5-42c1-89da-1c1f5123755c">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '6262237823672255000',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.scophp.com/uncategorized/install-php-apm.html"/>
+
+
+
+
+
+  <title> centos安装php-apm | 浪人日记 </title>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4046550203745783",
+    enable_page_level_ads: true
+  });
+</script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3b908f0c5ae26ed9b3f54c837282c3c0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">浪人日记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">互联网上的一个冲浪者</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-git">
+          <a href="/categories/git/index.html" rel="section">
+            
+            Git
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-other">
+          <a href="/categories/other/index.html" rel="section">
+            
+            杂说
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.scophp.com/uncategorized/install-php-apm.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="klgd">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="浪人日记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                centos安装php-apm
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-28T10:58:06+08:00">
+                2017-07-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/uncategorized/install-php-apm.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="uncategorized/install-php-apm.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/uncategorized/install-php-apm.html" class="leancloud_visitors" data-flag-title="centos安装php-apm">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><a href="https://github.com/patrickallaert/php-apm" target="_blank" rel="external">php-apm</a> 是一个PHP的应用性能管理（APM）。它不需要对应用程序的代码进行任何修改，让我们方便地捕捉到错误信息，并提供错误追踪回溯，获取请求的统计内存、CPU、响应时间的统计信息，并提供可视化的展示。。</p>
+<a id="more"></a>
+<h2 id="安装apm"><a href="#安装apm" class="headerlink" title="安装apm"></a>安装apm</h2><h3 id="pecl安装"><a href="#pecl安装" class="headerlink" title="pecl安装"></a>pecl安装</h3><blockquote>
+<p>这里我只开启了Sqlite3的支持</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div></pre></td><td class="code"><pre><div class="line">[root@centos7 ~]# pecl install apm</div><div class="line">WARNING: channel &quot;pecl.php.net&quot; has updated its protocols, use &quot;pecl channel-update pecl.php.net&quot; to update</div><div class="line">downloading APM-2.1.3.tgz ...</div><div class="line">Starting to download APM-2.1.3.tgz (33,188 bytes)</div><div class="line">.....done: 33,188 bytes</div><div class="line">14 source files, building</div><div class="line">running: phpize</div><div class="line">Configuring for:</div><div class="line">PHP Api Version:         20160303</div><div class="line">Zend Module Api No:      20160303</div><div class="line">Zend Extension Api No:   320160303</div><div class="line">Enable Sqlite3 support [yes] : </div><div class="line">Enable MariaDB/MySQL support [yes] : no</div><div class="line">Enable Socket support [yes] : no</div><div class="line">Enable Statsd support [yes] : no</div><div class="line">building in /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3</div><div class="line">running: /tmp/pear/temp/APM/configure --with-php-config=/usr/local/php/bin/php-config --with-sqlite3 --with-mysql=no --enable-socket=no --enable-statsd=no</div><div class="line">checking for grep that handles long lines and -e... /usr/bin/grep</div><div class="line">checking for egrep... /usr/bin/grep -E</div><div class="line">checking for a sed that does not truncate output... /usr/bin/sed</div><div class="line">checking for cc... cc</div><div class="line">checking whether the C compiler works... yes</div><div class="line">checking for C compiler default output file name... a.out</div><div class="line">checking for suffix of executables...</div><div class="line">checking whether we are cross compiling... no</div><div class="line">checking for suffix of object files... o</div><div class="line">checking whether we are using the GNU C compiler... yes</div><div class="line">checking whether cc accepts -g... yes</div><div class="line">checking for cc option to accept ISO C89... none needed</div><div class="line">checking how to run the C preprocessor... cc -E</div><div class="line">checking for icc... no</div><div class="line">checking for suncc... no</div><div class="line">checking whether cc understands -c and -o together... yes</div><div class="line">checking for system library directory... lib</div><div class="line">checking if compiler supports -R... no</div><div class="line">checking if compiler supports -Wl,-rpath,... yes</div><div class="line">checking build system type... x86_64-unknown-linux-gnu</div><div class="line">checking host system type... x86_64-unknown-linux-gnu</div><div class="line">checking target system type... x86_64-unknown-linux-gnu</div><div class="line">checking for PHP prefix... /usr/local/php</div><div class="line">checking for PHP includes... -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib</div><div class="line">checking for PHP extension directory... /usr/local/php/lib/php/extensions/no-debug-non-zts-20160303</div><div class="line">checking for PHP installed headers prefix... /usr/local/php/include/php</div><div class="line">checking if debug is enabled... no</div><div class="line">checking if zts is enabled... no</div><div class="line">checking for re2c... no</div><div class="line">configure: WARNING: You will need re2c 0.13.4 or later if you want to regenerate PHP parsers.</div><div class="line">checking for gawk... gawk</div><div class="line">checking whether to enable apm support... yes, shared</div><div class="line">checking enable support for sqlite3... yes</div><div class="line">checking enable support for MySQL... no</div><div class="line">checking enable support for statsd... no</div><div class="line">checking enable support for socket... no</div><div class="line">checking enable the debug file... no</div><div class="line">checking set default sqlite3 default DB path... no</div><div class="line">checking for the location of libz... no</div><div class="line">checking for sqlite3 files in default path... found in /usr</div><div class="line">checking for SQLite 3.*... checking for sqlite3_open in -lsqlite3... yes</div><div class="line">checking location of default sqlite3 DB... &quot;/var/php/apm/db&quot;</div><div class="line">checking for ld used by cc... /usr/bin/ld</div><div class="line">checking if the linker (/usr/bin/ld) is GNU ld... yes</div><div class="line">checking for /usr/bin/ld option to reload object files... -r</div><div class="line">checking for BSD-compatible nm... /usr/bin/nm -B</div><div class="line">checking whether ln -s works... yes</div><div class="line">checking how to recognize dependent libraries... pass_all</div><div class="line">checking for ANSI C header files... yes</div><div class="line">checking for sys/types.h... yes</div><div class="line">checking for sys/stat.h... yes</div><div class="line">checking for stdlib.h... yes</div><div class="line">checking for string.h... yes</div><div class="line">checking for memory.h... yes</div><div class="line">checking for strings.h... yes</div><div class="line">checking for inttypes.h... yes</div><div class="line">checking for stdint.h... yes</div><div class="line">checking for unistd.h... yes</div><div class="line">checking dlfcn.h usability... yes</div><div class="line">checking dlfcn.h presence... yes</div><div class="line">checking for dlfcn.h... yes</div><div class="line">checking the maximum length of command line arguments... 1572864</div><div class="line">checking command to parse /usr/bin/nm -B output from cc object... ok</div><div class="line">checking for objdir... .libs</div><div class="line">checking for ar... ar</div><div class="line">checking for ranlib... ranlib</div><div class="line">checking for strip... strip</div><div class="line">checking if cc supports -fno-rtti -fno-exceptions... no</div><div class="line">checking for cc option to produce PIC... -fPIC</div><div class="line">checking if cc PIC flag -fPIC works... yes</div><div class="line">checking if cc static flag -static works... no</div><div class="line">checking if cc supports -c -o file.o... yes</div><div class="line">checking whether the cc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes</div><div class="line">checking whether -lc should be explicitly linked in... no</div><div class="line">checking dynamic linker characteristics... GNU/Linux ld.so</div><div class="line">checking how to hardcode library paths into programs... immediate</div><div class="line">checking whether stripping libraries is possible... yes</div><div class="line">checking if libtool supports shared libraries... yes</div><div class="line">checking whether to build shared libraries... yes</div><div class="line">checking whether to build static libraries... no</div><div class="line"></div><div class="line">creating libtool</div><div class="line">appending configuration tag &quot;CXX&quot; to libtool</div><div class="line">configure: creating ./config.status</div><div class="line">config.status: creating config.h</div><div class="line">running: make</div><div class="line">/bin/sh /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/libtool --mode=compile cc  -I. -I/tmp/pear/temp/APM -DPHP_ATOM_INC -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/include -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/main -I/tmp/pear/temp/APM -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -c /tmp/pear/temp/APM/apm.c -o apm.lo</div><div class="line">mkdir .libs</div><div class="line"> cc -I. -I/tmp/pear/temp/APM -DPHP_ATOM_INC -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/include -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/main -I/tmp/pear/temp/APM -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib -DHAVE_CONFIG_H -g -O2 -c /tmp/pear/temp/APM/apm.c  -fPIC -DPIC -o .libs/apm.o</div><div class="line">/bin/sh /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/libtool --mode=compile cc  -I. -I/tmp/pear/temp/APM -DPHP_ATOM_INC -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/include -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/main -I/tmp/pear/temp/APM -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -c /tmp/pear/temp/APM/backtrace.c -o backtrace.lo</div><div class="line"> cc -I. -I/tmp/pear/temp/APM -DPHP_ATOM_INC -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/include -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/main -I/tmp/pear/temp/APM -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib -DHAVE_CONFIG_H -g -O2 -c /tmp/pear/temp/APM/backtrace.c  -fPIC -DPIC -o .libs/backtrace.o</div><div class="line">/bin/sh /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/libtool --mode=compile cc  -I. -I/tmp/pear/temp/APM -DPHP_ATOM_INC -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/include -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/main -I/tmp/pear/temp/APM -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -c /tmp/pear/temp/APM/driver_sqlite3.c -o driver_sqlite3.lo</div><div class="line"> cc -I. -I/tmp/pear/temp/APM -DPHP_ATOM_INC -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/include -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/main -I/tmp/pear/temp/APM -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib -DHAVE_CONFIG_H -g -O2 -c /tmp/pear/temp/APM/driver_sqlite3.c  -fPIC -DPIC -o .libs/driver_sqlite3.o</div><div class="line">/bin/sh /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/libtool --mode=link cc -DPHP_ATOM_INC -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/include -I/tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/main -I/tmp/pear/temp/APM -I/usr/local/php/include/php -I/usr/local/php/include/php/main -I/usr/local/php/include/php/TSRM -I/usr/local/php/include/php/Zend -I/usr/local/php/include/php/ext -I/usr/local/php/include/php/ext/date/lib  -DHAVE_CONFIG_H  -g -O2   -o apm.la -export-dynamic -avoid-version -prefer-pic -module -rpath /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/modules  apm.lo backtrace.lo driver_sqlite3.lo -lsqlite3</div><div class="line">cc -shared  .libs/apm.o .libs/backtrace.o .libs/driver_sqlite3.o  -lsqlite3  -Wl,-soname -Wl,apm.so -o .libs/apm.so</div><div class="line">creating apm.la</div><div class="line">(cd .libs &amp;&amp; rm -f apm.la &amp;&amp; ln -s ../apm.la apm.la)</div><div class="line">/bin/sh /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/libtool --mode=install cp ./apm.la /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/modules</div><div class="line">cp ./.libs/apm.so /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/modules/apm.so</div><div class="line">cp ./.libs/apm.lai /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/modules/apm.la</div><div class="line">PATH=&quot;$PATH:/sbin&quot; ldconfig -n /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/modules</div><div class="line">----------------------------------------------------------------------</div><div class="line">Libraries have been installed in:</div><div class="line">   /tmp/pear/temp/pear-build-rootNsvyxI/APM-2.1.3/modules</div><div class="line"></div><div class="line">If you ever happen to want to link against installed libraries</div><div class="line">in a given directory, LIBDIR, you must either use libtool, and</div><div class="line">specify the full pathname of the library, or use the `-LLIBDIR&apos;</div><div class="line">flag during linking and do at least one of the following:</div><div class="line">   - add LIBDIR to the `LD_LIBRARY_PATH&apos; environment variable</div><div class="line">     during execution</div><div class="line">   - add LIBDIR to the `LD_RUN_PATH&apos; environment variable</div><div class="line">     during linking</div><div class="line">   - use the `-Wl,--rpath -Wl,LIBDIR&apos; linker flag</div><div class="line">   - have your system administrator add LIBDIR to `/etc/ld.so.conf&apos;</div><div class="line"></div><div class="line">See any operating system documentation about shared libraries for</div><div class="line">more information, such as the ld(1) and ld.so(8) manual pages.</div><div class="line">----------------------------------------------------------------------</div><div class="line"></div><div class="line">Build complete.</div><div class="line">Don&apos;t forget to run &apos;make test&apos;.</div><div class="line"></div><div class="line">running: make INSTALL_ROOT=&quot;/tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3&quot; install</div><div class="line">Installing shared extensions:     /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/</div><div class="line">running: find &quot;/tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3&quot; | xargs ls -dils</div><div class="line">100818730   0 drwxr-xr-x 3 root root     17 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3</div><div class="line"> 68835720   0 drwxr-xr-x 3 root root     19 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr</div><div class="line">101659046   0 drwxr-xr-x 3 root root     17 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local</div><div class="line">   581135   0 drwxr-xr-x 3 root root     17 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local/php</div><div class="line"> 34343477   0 drwxr-xr-x 3 root root     17 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local/php/lib</div><div class="line"> 68835722   0 drwxr-xr-x 3 root root     24 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local/php/lib/php</div><div class="line">101844652   0 drwxr-xr-x 3 root root     39 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local/php/lib/php/extensions</div><div class="line">   969759   0 drwxr-xr-x 2 root root     20 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303</div><div class="line">   969761 152 -rwxr-xr-x 1 root root 154232 7月  28 10:39 /tmp/pear/temp/pear-build-rootNsvyxI/install-APM-2.1.3/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/apm.so</div><div class="line"></div><div class="line">Build process completed successfully</div><div class="line">Installing &apos;/usr/local/php/lib/php/extensions/no-debug-non-zts-20160303/apm.so&apos;</div><div class="line">install ok: channel://pecl.php.net/APM-2.1.3</div><div class="line">Extension apm enabled in php.ini</div></pre></td></tr></table></figure>
+<p>如果出现了如下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">checking set default sqlite3 default DB path... no</div><div class="line">checking for the location of libz... no</div><div class="line">checking for sqlite3 files in default path... not found</div><div class="line">configure: error: Please reinstall the sqlite</div></pre></td></tr></table></figure>
+<p>请先安装<code>sqlite-devel</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum -y install sqlite-devel</div></pre></td></tr></table></figure>
+<p>修改php.ini， apm.so依赖于json.so，如果之前没有加载，则应先加载</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[apm]</div><div class="line">extension=&quot;apm.so&quot;</div><div class="line">apm.sqlite_enabled=1</div><div class="line">apm.sqlite_stats_enabled=1</div><div class="line">; The directory containing the &quot;events&quot; file</div><div class="line">apm.sqlite_db_path=&quot;/var/php/apm/db/&quot;</div><div class="line">; Error reporting level specific to the SQLite3 driver, same level as for PHP&apos;s *error_reporting*</div><div class="line">apm.sqlite_error_reporting=E_ALL|E_STRICT</div></pre></td></tr></table></figure>
+<p>然后重启<code>php-fpm</code></p>
+<h2 id="可视化-web前端"><a href="#可视化-web前端" class="headerlink" title="可视化 web前端"></a>可视化 web前端</h2><p>php-apm提供了一个可视化数据的web前端 <a href="https://github.com/patrickallaert/php-apm-web" target="_blank" rel="external">https://github.com/patrickallaert/php-apm-web</a></p>
+<p>将 <a href="https://github.com/patrickallaert/php-apm-web/archive/master.zip" target="_blank" rel="external">https://github.com/patrickallaert/php-apm-web/archive/master.zip</a> 解压到web服务器，或者使用git clone：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/patrickallaert/php-apm-web.git apm-web</div></pre></td></tr></table></figure>
+<p>配置<code>config/db.php</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">return new PDO(&quot;sqlite:/var/php/apm/db/events&quot;);</div></pre></td></tr></table></figure>
+<p>页面效果：   </p>
+<p><img src="http://aker8img.qiniudn.com/58f901ee-67e5-42c1-89da-1c1f5123755c" alt=""></p>
+<p><img src="http://aker8img.qiniudn.com/204fd245-bd62-4704-9a74-3782422f0493" alt=""></p>
+<p><img src="http://aker8img.qiniudn.com/a1f757ab-150c-469a-983d-cba527b32685" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wxpay.jpg" alt="klgd WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="klgd Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/uncategorized/centos7-yum-install-mongodb.html" rel="next" title="centos7下使用yum安装mongodb3.4">
+                <i class="fa fa-chevron-left"></i> centos7下使用yum安装mongodb3.4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.png"
+               alt="klgd" />
+          <p class="site-author-name" itemprop="name">klgd</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/klgd" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装apm"><span class="nav-number">1.</span> <span class="nav-text">安装apm</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#pecl安装"><span class="nav-number">1.1.</span> <span class="nav-text">pecl安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可视化-web前端"><span class="nav-number">2.</span> <span class="nav-text">可视化 web前端</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">klgd</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'scophp';
+      var disqus_identifier = 'uncategorized/install-php-apm.html';
+
+      var disqus_title = "centos安装php-apm";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("z95NyGoyeXLrPinTtjDF4g1H-gzGzoHsz", "ON9aTPxSvLr9gGCJ16l0HpIi");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

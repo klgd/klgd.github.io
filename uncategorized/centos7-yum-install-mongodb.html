@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="浪人日记">
 <meta property="og:description" content="配置yum源vi /etc/yum.repos.d/mongodb-3.4.repos 123456[mongodb-org-3.4]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/gpgcheck=1enabled=1gpgkey=https">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-07-26T06:29:58.603Z">
+<meta property="og:updated_time" content="2017-07-27T08:37:21.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos7下使用yum安装mongodb3.4">
 <meta name="twitter:description" content="配置yum源vi /etc/yum.repos.d/mongodb-3.4.repos 123456[mongodb-org-3.4]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/gpgcheck=1enabled=1gpgkey=https">
@@ -376,7 +376,8 @@
 <p>停止mongod<br><code>systemctl stop mongod.service</code></p>
 <p>开机启动<br><code>systemctl enable mongod.service</code></p>
 <p>使用 命令  <code>mongo</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@centos7 ~]# mongo</div><div class="line">MongoDB shell version v3.4.6</div><div class="line">connecting to: mongodb://127.0.0.1:27017</div><div class="line">MongoDB server version: 3.4.6</div><div class="line">Server has startup warnings: </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is &apos;always&apos;.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[root@centos7 ~]# mongo 127.0.0.1:27017</div><div class="line">MongoDB shell version v3.4.6</div><div class="line">connecting to: mongodb://127.0.0.1:27017</div><div class="line">MongoDB server version: 3.4.6</div><div class="line">Server has startup warnings: </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] ** WARNING: Access control is not enabled for the database.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] **          Read and write access to data and configuration is unrestricted.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/enabled is &apos;always&apos;.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] </div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is &apos;always&apos;.</div><div class="line">2017-07-26T11:14:38.412+0800 I CONTROL  [initandlisten] **        We suggest setting it to &apos;never&apos;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -442,6 +443,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/uncategorized/install-php-apm.html" rel="prev" title="centos安装php-apm">
+                centos安装php-apm <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -520,7 +525,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -542,7 +547,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
