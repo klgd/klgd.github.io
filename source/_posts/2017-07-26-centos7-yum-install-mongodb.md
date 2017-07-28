@@ -1,9 +1,10 @@
 ---
 title: centos7下使用yum安装mongodb3.4
 tags:
-  - null
+  - Centos
+  - MongoDB
 categories:
-  - null
+  - MongoDB
 date: 2017-07-26 13:08:02
 ---
 
